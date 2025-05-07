@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autori – La Bottega</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f0ea;
+      --text: #1c1c1c;
+      --accent: #234534;
+      --highlight: #7d5a3a;
+      --card-bg: #fff;
+      --font-mono: 'Spline Sans Mono', monospace;
+      --font-alt: 'Unbounded', cursive;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--bg); color: var(--text); font-family: var(--font-mono); line-height: 1.6; }
+    header { padding: 3rem 2rem; text-align: center; }
+    header img { max-width: 350px; height: auto; filter: drop-shadow(3px 3px 6px #00000022); }
+    nav { background-color: var(--accent); display: flex; justify-content: center; gap: 2rem; padding: 1rem; font-family: var(--font-alt); position: relative; }
+    nav a { color: #fdfdfd; text-decoration: none; font-weight: 700; font-size: 1rem; text-transform: uppercase; position: relative; }
+    nav a::after { content: ""; position: absolute; width: 0; height: 2px; background: #fff; bottom: -3px; left: 0; transition: 0.3s; }
+    nav a:hover::after { width: 100%; }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--accent);
+      min-width: 160px;
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--highlight);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .author-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .author-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      padding: 2rem;
+    }
+
+    .author-card:hover { transform: scale(1.05); }
+
+    .author-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .author-card h3 {
+      font-family: var(--font-alt);
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin: 1rem 0;
+    }
+
+    .author-card p {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    .author-card a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .author-card a:hover {
+      color: var(--highlight);
+    }
+
+    footer {
+      background-color: #fdf6ec;
+      border-top: 2px solid #ccc;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-family: var(--font-alt);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .footer-links a { text-decoration: none; color: var(--text); }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      color: var(--accent);
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: var(--highlight);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo1.png" alt="La Gobba - Rivista Culturale">
+  </header>
+
+  <nav>
+    <a href="Bottega49.html">Home</a>
+    <div class="dropdown">
+    <a href="Rubriche.html">Rubriche</a>
+    <div class="dropdown-content">
+        <a href="Cinema.html">Cinema e Cultura Visuale</a>
+        <a href="Letteratura.html">Letteratura e Poesia</a>
+        <a href="Arte.html">Arte e Filosofia</a>
+        <a href="Musica.html">Musica</a>
+        <a href="mensile.html">La Briscola</a>
+      </div>
+    </div>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+
+  <section class="author-section">
+    <div class="author-card">
+      <img src="tommi.jpeg" alt="Tommaso Filippucci">
+      <h3>Tommaso Filippucci</h3>
+      <p>Poeta e musicista è appassionato di letteratura, poesia, filosofia e musica. Con uno stile critico e raffinato, utilizza la traduzione come arma di scirttura e cambiamento. Tommaso è co-fondatore della rivista e un pilastro della sua visione culturale.</p>
+    </div>
+    <div class="author-card">
+      <img src="nic.jpeg" alt="Nicolò Silverii">
+      <h3>Nicolò Silverii</h3>
+      <p>Regista e musicista è appassionato di cinema, arte e musica. Le sue riflessioni toccano temi di arte, estetica e cinema, sempre con uno sguardo critico sulle dinamiche contemporanee. Nicolò è co-fondatore della rivista e un pilastro della sua visione culturale.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 La Gobba – Rivista Culturale Indipendente</p>
+    <div class="footer-links">
+      <a href="autori.html">Autori</a>
+      <a href="rubriche.html">Tematiche</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="archivio.html">Archivio</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tommasofilippucci_" target="_blank">Instagram</a>
+      <a href="mailto:tommipu3gmail.com">Email</a>
+    </div>
+  </footer>
+
+</body>
+</html>
