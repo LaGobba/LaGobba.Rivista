@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Briscola – Rubrica Mensile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f0ea;
+      --text: #1c1c1c;
+      --accent: #234534;
+      --highlight: #7d5a3a;
+      --card-bg: #fff;
+      --font-mono: 'Spline Sans Mono', monospace;
+      --font-alt: 'Unbounded', cursive;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--bg); color: var(--text); font-family: var(--font-mono); line-height: 1.6; }
+    header { padding: 3rem 2rem; text-align: center; }
+    header img { max-width: 350px; height: auto; filter: drop-shadow(3px 3px 6px #00000022); }
+    nav { background-color: var(--accent); display: flex; justify-content: center; gap: 2rem; padding: 1rem; font-family: var(--font-alt); position: relative; }
+    nav a { color: #fdfdfd; text-decoration: none; font-weight: 700; font-size: 1rem; text-transform: uppercase; position: relative; }
+    nav a::after { content: ""; position: absolute; width: 0; height: 2px; background: #fff; bottom: -3px; left: 0; transition: 0.3s; }
+    nav a:hover::after { width: 100%; }
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--accent);
+      min-width: 160px;
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--highlight);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #234534, #7d5a3a);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+      font-family: var(--font-alt);
+    }
+    .hero h2 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto; }
+
+    .briscola {
+      background-color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .briscola h3 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      font-family: var(--font-alt);
+      margin-bottom: 1.5rem;
+    }
+    .briscola .carta {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .briscola p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.7;
+    }
+    .btn-articoli {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 2rem;
+  background-color: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-alt);
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-articoli:hover {
+  background-color: var(--highlight);
+  transform: translateY(-2px);
+}
+  :root {
+  --accent: #234534;
+  --highlight: #7d5a3a;
+  --card-bg: #fff;
+  --font-alt: 'Unbounded', cursive;
+}
+
+.pesca-carta {
+  background-color: #fdf6ec;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Spline Sans Mono', monospace;
+}
+
+.pesca-carta h4 {
+  font-family: var(--font-alt);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pulsante-pesca {
+  background-color: var(--accent);
+  color: #fff;
+  font-family: var(--font-alt);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.pulsante-pesca:hover {
+  background-color: var(--highlight);
+}
+
+.shuffle-container {
+  margin-top: 3rem;
+  height: 250px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mazzo {
+  width: 120px;
+  height: 180px;
+  margin: 0 auto;
+  background: #f4f0ea;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: shuffle 1s ease-in-out forwards;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  background: #234534;
+  transform: shuffle(180deg);
+}
+
+.carta-rivelata {
+  margin-top: 2rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease 1s, transform 0.6s ease 1s;
+  font-family: var(--font-alt);
+  font-size: 1.5rem;
+  color: var(--highlight);
+  position: absolute;
+  width: 120px;
+  height: 180px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.9); /* Centrato assolutamente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify-all;
+  flex-direction: column; /* Aggiunta per allineare la carta e il pulsante in colonna */
+}
+
+.carta-immagine {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* L'immagine si adatta perfettamente al contenitore */
+  border-radius: 8px;
+}
+
+.leggi-mensile {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--highlight);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.leggi-mensile:hover {
+  background-color: var(--accent);
+}
+
+/* Quando il checkbox è selezionato, mostra la carta e il pulsante */
+#toggle-carta:checked ~ .shuffle-container .mazzo {
+  animation: shuffle 1s ease-in-out forwards;
+}
+
+#toggle-carta:checked ~ .shuffle-container .carta-rivelata {
+  opacity: 1;
+  transform: translate(-50%, -43%) scale(1);
+}
+
+
+@keyframes shuffle {
+  0% { transform: rotate(0deg) translateX(0); }
+  25% { transform: rotate(5deg) translateX(10px); }
+  50% { transform: rotate(-5deg) translateX(-10px); }
+  75% { transform: rotate(3deg) translateX(5px); }
+  100% { transform: rotate(0deg) translateX(0); }
+}
+
+    .archivio-mensile {
+      padding: 4rem 2rem;
+      background-color: #e8e1d6;
+    }
+    .archivio-mensile h4 {
+      font-family: var(--font-alt);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .archivio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .mese {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+    .mese:hover {
+      transform: scale(1.03);
+    }
+    .mese h5 {
+      font-family: var(--font-alt);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .mese .carta {
+      color: var(--highlight);
+      font-weight: bold;
+    }
+    .mese p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      background-color: #fdf6ec;
+      border-top: 2px solid #ccc;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-family: var(--font-alt);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .footer-links a { text-decoration: none; color: var(--text); }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      color: var(--accent);
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: var(--highlight);
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="La Briscola - Rubrica Mensile">
+</header>
+
+  <nav>
+    <a href="Bottega49.html">Home</a>
+    <div class="dropdown">
+      <a href="rubriche.html">Rubriche</a>
+      <div class="dropdown-content">
+        <a href="Cinema.html">Cinema e Cultura Visuale</a>
+        <a href="Letteratura.html">Letteratura e Poesia</a>
+        <a href="Arte.html">Arte e Filosofia</a>
+        <a href="Musica.html">Musica</a>
+        <a href="mensile.html">La Briscola</a>
+      </div>
+    </div>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+
+<section class="hero">
+  <h2>La Briscola</h2>
+  <p>Ogni mese, una carta. Ogni carta, un tema. Uno spazio per pensare, riflettere e creare.</p>
+</section>
+
+<div class="pesca-carta">
+  <h4>- Maggio 2025 -</h4>
+  <label for="toggle-carta" class="pulsante-pesca">Pesca una carta</label>
+  <input type="checkbox" id="toggle-carta" hidden>
+
+  <div class="shuffle-container">
+    <div class="mazzo">
+      <div class="card-front"></div>
+      <div class="card-back"></div>
+    </div>
+    <div class="carta-rivelata">
+      <img class="carta-immagine" src="cavallocop.png" alt="Carta estratta">
+       <a href="cavallocop.html" class="leggi-mensile">Leggi il mensile</a>
+    </div>
+  </div>
+</div>
+
+<section class="archivio-mensile">
+  <h4>Archivio delle Carte già pescate</h4>
+  <div class="archivio">
+    <div class="mese">
+      <h5>Marzo 2025</h5>
+      <div class="carta">♠ Asso di Spade</div>
+      <p>La parola tagliente, il pensiero che fende. Abbiamo parlato di critica, conflitto, lucidità.</p>
+    </div>
+    <div class="mese">
+      <h5>Febbraio 2025</h5>
+      <div class="carta">♣ Fante di Bastoni</div>
+      <p>Iniziativa, slancio, visioni giovani. Un numero dedicato alla creatività in divenire.</p>
+    </div>
+    <div class="mese">
+      <h5>Gennaio 2025</h5>
+      <div class="carta">♥ Tre di Coppe</div>
+      <p>Festa, connessione, condivisione. Un inizio d’anno tra comunità e allegria pensata.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 La Briscola – Rubrica Mensile del Cavallo di Coppe</p>
+    <div class="footer-links">
+      <a href="autori.html">Autori</a>
+      <a href="#">Tematiche</a>
+      <a href="#">Eventi</a>
+      <a href="archivio.html">Archivio</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tommasofilippucci_" target="_blank">Instagram</a>
+      <a href="mailto:tommipu3@gmail.com">Email</a>
+    </div>
+
+</footer>
+
+</body>
+</html>

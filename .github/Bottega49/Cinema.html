@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Gobba – Rivista Culturale</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f0ea;
+      --text: #1c1c1c;
+      --accent: #234534;
+      --highlight: #7d5a3a;
+      --card-bg: #fff;
+      --font-mono: 'Spline Sans Mono', monospace;
+      --font-alt: 'unbounded', cursive;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--bg); color: var(--text); font-family: var(--font-mono); line-height: 1.6; }
+    nav { background-color: var(--accent); display: flex; justify-content: center; gap: 2rem; padding: 1rem; font-family: var(--font-alt); position: relative; }
+    nav a { color: #fdfdfd; text-decoration: none; font-weight: 700; font-size: 1rem; text-transform: uppercase; position: relative; }
+    nav a::after { content: ""; position: absolute; width: 0; height: 2px; background: #fff; bottom: -3px; left: 0; transition: 0.3s; }
+    nav a:hover::after { width: 100%; }
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--bg);
+}
+
+.logo {
+  max-width: 150px;
+}
+.lente{max-width: 95px;
+}
+
+.site-title {
+  font-family: 'Arcane Nine';
+  src: 'Arcane Nine.otf' format('truetype');
+  font-style: normal;;
+  font-size:8rem;
+  font-weight: 20rem;
+  text-transform: uppercase;
+  text-align: center;
+  flex: 1;
+  margin-right: 3.4rem;
+}
+@font-face {
+      font-family: 'Arcane Nine';
+      src: url('Arcane Nine.otf') format('truetype');
+
+}
+
+.framed-box {
+  border: 2px solid var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--accent);
+      min-width: 160px;
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+    .dropdown-content a:hover {
+      background-color: var(--highlight);
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    .hero {
+      background: linear-gradient(135deg, #234534, #7d5a3a);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+      font-family: 'unbounded';
+  font-weight: normal;
+  font-style: normal;
+
+    }
+    .hero h2 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto; font-family:var(--font-alt) }
+
+    .manifesto {
+      background-color: #e8e1d6;
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 6px double var(--accent);
+      border-bottom: 6px double var(--accent);
+    }
+    .manifesto h3 {
+      font-size: 2.2rem;
+      font-family: var(--font-alt);
+      margin-bottom: 1rem;
+    }
+    .manifesto p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      background-color: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-alt);
+      font-weight: 700;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: var(--highlight);
+    }
+    .evento {
+      background-color: var(--card-bg);
+      margin: 3rem auto;
+      max-width: 800px;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .evento h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .evento p {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    th {
+      background-color: #e8e1d6;
+      font-family: 'Playfair Display', serif;
+    }
+
+    form {
+      margin-top: 1rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Droid Serif', serif;
+    }
+ .contatti {
+      background-color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .contatti h3 {
+      font-family: var(--font-alt);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .contatti p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #444;
+    }
+
+    .contatti form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contatti input, .contatti textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      color: var(--text);
+      resize: vertical;
+    }
+
+    .contatti button {
+      background-color: var(--accent);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contatti button:hover {
+      background-color: var(--highlight);
+    }
+    .author-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .author-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      padding: 2rem;
+    }
+
+    .author-card:hover { transform: scale(1.05); }
+
+    .author-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .author-card h3 {
+      font-family: var(--font-alt);
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin: 1rem 0;
+    }
+
+    .author-card p {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    .author-card a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .author-card a:hover {
+      color: var(--highlight);
+    }
+
+    .articoli {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+    .articolo {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .articolo:hover { transform: scale(1.02); }
+    .articolo img { width: 100%; height: 220px; object-fit: cover; }
+    .contenuto { padding: 1.5rem; }
+    .articolo h3 { font-family: var(--font-alt); font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .articolo p { font-size: 0.95rem; color: #444; }
+    .articolo a { display: inline-block; margin-top: 1rem; text-decoration: none; color: var(--accent); font-weight: bold; }
+    footer {
+      background-color: #fdf6ec;
+      border-top: 2px solid #ccc;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-family: var(--font-alt);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .footer-links a { text-decoration: none; color: var(--text); }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      color: var(--accent);
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: var(--highlight);
+    }
+ .social-links img {
+  max-width: 50px;
+}
+ 
+blockquote { font-style: italic; text-align: center; color: #6b7280; margin: 2rem 0; }
+    hr { margin: 3rem 0; border-color: #e5e7eb; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+    .back-link { font-size: 0.9rem; color: #555; text-decoration: none; display: flex; align-items: center; margin-bottom: 1rem; }
+    main h1 { font-size: 2.6rem; font-weight: bold; margin-bottom: 0.5rem; }
+    main h2 { font-size: 1.2rem; font-style: italic; color: #666; margin-bottom: 0.25rem; }
+    main p.meta { font-size: 0.9rem; color: #888; margin-bottom: 2rem; }
+    .text-content img {
+  width: 40%; 
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--highlight);
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+
+
+    .text-content p { margin-bottom: 1.5rem; text-align: justify; }
+    .text-content h3 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+    .text-content img { max-width: 100%; height: auto; display: block; margin: 2rem auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+.nome { margin-bottom: 3rem; text-align: justify;}
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem;
+      }
+  </style>
+</head>
+<body>
+
+   <header>
+  <div class="header-wrapper">
+    
+    <img src="logo1.png" class="logo">
+    <h1 class="site-title"><u>La Gobba</u></h1>
+    <a href="cerca.html"><img src="lente.jpg" class='lente'></a>
+  </div>
+</header>
+
+
+ <nav>
+  <a href="Bottega49.html">Home</a>
+  <div class="dropdown">
+    <a href="Rubriche.html">Rubriche</a>
+    <div class="dropdown-content">
+      <a href="Cinema.html">Cinema</a>
+      <a href="Letteratura.html">Letteratura</a>
+      <a href="Arte.html">Arte</a>
+      <a href="Musica.html">Musica</a>
+    </div>
+  </div>
+  <a href="manifesto.html">Manifesto</a>
+  <a href="contatti.html">Contatti</a>
+</nav>
+
+
+  <section class="hero">
+    <h2>Cinema e Cultura Visuale</h2>
+    <p>Sguardi, immagini, montaggi. Una rubrica dedicata al potere visivo della narrazione contemporanea.</p>
+  </section>
+
+  <section class="articoli">
+    <div class="articolo">
+      <img src="roxy.jpg" alt="Analisi Filmica">
+      <div class="contenuto">
+        <h3>La solitudine dell’inquadratura</h3>
+        <p>Un viaggio tra i silenzi visivi del cinema d’autore contemporaneo.</p>
+        <a href="#">Leggi →</a>
+      </div>
+    </div>
+    <div class="articolo">
+      <img src="taxi.jpg" alt="Cinema politico">
+      <div class="contenuto">
+        <h3>Quando l’immagine diventa protesta</h3>
+        <p>Estetiche e politiche nei film che hanno cambiato il nostro sguardo.</p>
+        <a href="#">Leggi →</a>
+      </div>
+    </div>
+    <div class="articolo">
+      <img src="pulp.jpg" alt="Cultura Visuale">
+      <div class="contenuto">
+        <h3>Lo schermo e la realtà</h3>
+        <p>Dalla fiction alle stories: come il visivo plasma il nostro immaginario.</p>
+        <a href="#">Leggi →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 La Gobba – Rivista Culturale Indipendente</p>
+    <div class="footer-links">
+      <a href="autori.html">Autori</a>
+      <a href="rubriche.html">Tematiche</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="archivio.html">Archivio</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/il_tuo_instagram" target="_blank">Instagram</a>
+      <a href="mailto:email@esempio.com">Email</a>
+    </div>
+  </footer>
+
+</body>
+</html>

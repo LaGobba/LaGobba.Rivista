@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Briscola – Il Cavallo di Coppe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f0ea;
+      --text: #1c1c1c;
+      --accent: #234534;
+      --highlight: #7d5a3a;
+      --card-bg: #fff;
+      --font-mono: 'Spline Sans Mono', monospace;
+      --font-alt: 'Unbounded', cursive;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--bg); color: var(--text); font-family: var(--font-mono); line-height: 1.6; }
+    header { padding: 3rem 2rem; text-align: center; }
+    header img { max-width: 350px; height: auto; filter: drop-shadow(3px 3px 6px #00000022); }
+    nav { background-color: var(--accent); display: flex; justify-content: center; gap: 2rem; padding: 1rem; font-family: var(--font-alt); position: relative; }
+    nav a { color: #fdfdfd; text-decoration: none; font-weight: 700; font-size: 1rem; text-transform: uppercase; position: relative; }
+    nav a::after { content: ""; position: absolute; width: 0; height: 2px; background: #fff; bottom: -3px; left: 0; transition: 0.3s; }
+    nav a:hover::after { width: 100%; }
+
+    .dropdown { position: relative; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--accent);
+      min-width: 160px;
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+    .dropdown-content a:hover { background-color: var(--highlight); }
+    .dropdown:hover .dropdown-content { display: block; }
+
+    .hero {
+      background: linear-gradient(135deg, #234534, #7d5a3a);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+      font-family: var(--font-alt);
+    }
+    .hero h2 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto; }
+
+    .contenuto {
+      background-color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .contenuto h3 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      font-family: var(--font-alt);
+      margin-bottom: 1.5rem;
+    }
+    .contenuto .carta {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .contenuto p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 3rem auto;
+  border-radius: 24px;
+  background-color: #f4f0ea;
+  border: 6px solid var(--highlight);
+  box-shadow:
+    inset 0 0 0 4px var(--card-bg),
+    0 8px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+.video-container:hover {
+  transform: scale(1.01);
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  border: none;
+}
+
+    footer {
+      background-color: #fdf6ec;
+      border-top: 2px solid #ccc;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-family: var(--font-alt);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="La Briscola - Rubrica Mensile">
+</header>
+
+<nav>
+  <a href="Bottega49.html">Home</a>
+  <div class="dropdown">
+    <a href="rubriche.html">Rubriche</a>
+    <div class="dropdown-content">
+      <a href="Cinema.html">Cinema e Cultura Visuale</a>
+      <a href="Letteratura.html">Letteratura e Poesia</a>
+      <a href="Arte.html">Arte e Filosofia</a>
+      <a href="Musica.html">Musica</a>
+      <a href="mensile.html">La Briscola</a>
+    </div>
+  </div>
+  <a href="manifesto.html">Manifesto</a>
+  <a href="contatti.html">Contatti</a>
+</nav>
+
+<section class="hero">
+  <h2>Il Cavallo di Coppe</h2>
+  <p>Inizia il viaggio. Con passo gentile e cuore aperto, il primo segno della nostra rubrica prende forma.</p>
+</section>
+
+<section class="contenuto">
+  <h3>Maggio 2025 – Il Cavallo di Coppe</h3>
+  <div class="carta">🐎</div>
+  <p>
+    Chi se non il Cavallo di Coppe ad aprire la nostra rubrica. Il  primo messaggero del sentire, il simbolo per eccellenza; questo mese non parleremo, bensì mostreremo solamente la morte e la sua catarsi grazie il corto "Cenere" girato da Nicolò Silverii.
+  </p>
+  <h4 style="font-family: var(--font-alt); font-size: 1.2rem; margin-bottom: 1rem; color: var(--highlight);">
+  Cenere - <em>Nicolò Silverii</em>
+</h4>
+
+  <div class="video-container">
+    <iframe src="cortonic.mp4" title="Il Cavallo di Coppe – Video Introduttivo" allowfullscreen></iframe>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 La Briscola – Rubrica Mensile del Cavallo di Coppe</p>
+</footer>
+
+</body>
+</html>
